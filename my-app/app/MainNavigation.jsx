@@ -12,14 +12,10 @@ function MainNavigation() {
               Home
             </Link>
           </li>
+         
           <li>
-            <Link className="py-2 block" href="/posts">
-              Posts
-            </Link>
-          </li>
-          <li>
-            <Link className="py-2 block" href="/about">
-              About us
+            <Link className="py-2 block" href="/grid">
+              Grid Page
             </Link>
           </li>
         </ul>

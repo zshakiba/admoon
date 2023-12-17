@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useMemo, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -14,11 +14,11 @@ const ImageCellRenderer = ({ value }) => (
 );
 
 function GridPage({ params }) {
-  const [rowData, setRowData] = useState();
+  const [rowData, setRowData] = useState([]);
   const [pageNum, setPageNum] = useState(params.pageNum);
 
   const [columnDefs] = useState([
-    { headerName: "id", field: "id" },
+    { headerName: "id", field: "id", width: 70 },
     {
       headerName: "Gallery Image",
       field: "gallery.image",
@@ -32,13 +32,7 @@ function GridPage({ params }) {
   ]);
 
   useEffect(() => {
-    console.log("params: ", params.pageNum);
-    setPageNum(params.pageNum);
-    console.log("params.pageNum: ", params.pageNum);
-    console.log("pageNum1: ", pageNum);
-
     const url = `https://api.shabe.ir/role?page=${pageNum}`;
-    console.log("url: ", url);
     fetch(url)
       .then((resp) => {
         if (!resp.ok) {
@@ -52,27 +46,15 @@ function GridPage({ params }) {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, [params.pageNum]);
+  }, [pageNum]);
 
-  console.log("pageNum2: ", pageNum);
-  const onGridReady = useCallback(() => {
-    console.log("pageNum3: ", pageNum);
-    const url = `https://api.shabe.ir/role?page=${pageNum}`;
-    console.log("url: ", url);
-    fetch(url)
-      .then((resp) => {
-        if (!resp.ok) {
-          throw new Error(`HTTP error! status: ${resp.status}`);
-        }
-        return resp.json();
-      })
-      .then((data) => {
-        setRowData(data.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, [pageNum]); 
+  const onGridReady = useCallback((params) => {
+    params.api.sizeColumnsToFit();
+  }, []);
+
+  const onFirstDataRendered = useCallback((params) => {
+    params.api.sizeColumnsToFit();
+  }, []);
 
   return (
     <div className="w-full h-full flex items-center justify-center">
@@ -84,6 +66,7 @@ function GridPage({ params }) {
           paginationPageSizeSelector={[5, 10, 15]}
           paginationPageSize={15}
           onGridReady={onGridReady}
+          onFirstDataRendered={onFirstDataRendered}
         />
       </div>
     </div>

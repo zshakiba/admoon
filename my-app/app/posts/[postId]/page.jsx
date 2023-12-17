@@ -5,6 +5,7 @@ async function fetchPost({ postId }) {
     `https://jsonplaceholder.typicode.com/posts/${postId}`
   );
   const post = await res.json();
+  console.log(post)
   return post;
 }
 
@@ -13,7 +14,7 @@ async function PostDetail({ params }) {
   return (
     <div>
       <h2>PostDetail - {params.postId}</h2>
-      <h3>post title - {post.id}</h3>
+      <h3>post title - {post.title}</h3>
       <p>{post.body}</p>
     </div>
   );

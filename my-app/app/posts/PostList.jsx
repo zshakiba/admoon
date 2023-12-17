@@ -22,7 +22,7 @@ async function PostList() {
               <p>{post.body}</p>
               <p className="text-blue-600">
                 <Link href={`/posts/${post.id}`}>
-                  <a>View Details</a>
+                 View Details
                 </Link>
               </p>
             </article>

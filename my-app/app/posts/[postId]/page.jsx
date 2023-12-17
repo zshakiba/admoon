@@ -5,7 +5,7 @@ async function fetchPost({ postId }) {
     `https://jsonplaceholder.typicode.com/posts/${postId}`
   );
   const post = await res.json();
-  console.log(post)
+  // console.log(post)
   return post;
 }
 

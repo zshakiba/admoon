@@ -13,11 +13,6 @@ function MainNavigation() {
             </Link>
           </li>
          
-          {/* <li>
-            <Link className="py-2 block" href="/grid/1">
-              Grid Page
-            </Link>
-          </li> */}
           <li>
             <Link className="py-2 block" href="/posts">
               posts Page

@@ -13,16 +13,16 @@ async function PostList() {
 
   return (
     <div>
-      <h2>PostList</h2>
+      <h2 className="text-2xl font-bold mb-4">PostList</h2>
       <ul>
         {posts.map((post) => (
           <li key={post.id} className="border-b-2 pb-4">
             <article>
-              <h2 className="font-bold">{post.title}</h2>
-              <p>{post.body}</p>
-              <p className="text-blue-600">
-                <Link href={`/posts/${post.id}`}>
-                 View Details
+              <h2 className="text-xl font-bold mb-2">{post.title}</h2>
+              <p className="text-gray-700">{post.body}</p>
+              <p className="mt-2">
+                <Link className="text-blue-600" href={`/posts/${post.id}`}>
+                  View Details
                 </Link>
               </p>
             </article>

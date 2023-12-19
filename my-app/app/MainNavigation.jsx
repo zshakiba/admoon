@@ -13,11 +13,11 @@ function MainNavigation() {
             </Link>
           </li>
          
-          <li>
+          {/* <li>
             <Link className="py-2 block" href="/posts">
               posts Page
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

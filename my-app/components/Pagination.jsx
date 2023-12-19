@@ -8,8 +8,6 @@ import {
 } from "react-icons/fa";
 
 const PaginationComponent = ({ currentPage, lastPage, loadPage }) => {
-  console.log("currentPage: ",currentPage);
-  console.log("lastPage: ",lastPage);
   return (
     <div className="flex justify-center items-center mt-4 space-x-4">
       <button

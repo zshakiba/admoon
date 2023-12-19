@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/globals.css";
-import MainNavigation from "./MainNavigation";
+import MainNavigation from "../MainNavigation";
 
 function layout({ children }) {
   return (
